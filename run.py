@@ -19,6 +19,7 @@ data = no1.get_all_values()
 print(data)
 
 polldata = ""
+percentage = []
 
 print("Input your data in this fashion:")
 print("question nr,answer amount,yes answers,no answers,none,check total\n")
@@ -27,8 +28,16 @@ print(polldata)
 datalist = str(polldata.split(","))
 print(datalist)
 
+def analyse():
+    if elements == "yes":
+        result = polldata[2]/polldata[1]
+        percentage = percentage.append(result)
+    else:
+        print("not done")
+
 print("what do you want?")
 print("Write the elements you want to compare to the number of answers")
 elements = str(input().split(","))
 print(elements)
-percentage = []
+
+
