@@ -17,3 +17,12 @@ SHEET = GSPREAD_CLIENT.open("Info-stats")
 no1 = SHEET.worksheet("no1")
 data = no1.get_all_values()
 print(data)
+
+polldata = ""
+
+print("Input your data in this fashion:")
+print("question nr,answer amount,yes answers,no answers,none,check total\n")
+polldata = input()
+print(polldata)
+datalist = str(polldata.split(","))
+print(datalist)
