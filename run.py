@@ -26,3 +26,9 @@ polldata = input()
 print(polldata)
 datalist = str(polldata.split(","))
 print(datalist)
+
+print("what do you want?")
+print("Write the elements you want to compare to the number of answers")
+elements = str(input().split(","))
+print(elements)
+percentage = []
