@@ -31,19 +31,26 @@ result = 0
 elements = ""
 temp = 0
 
+def convert_to_int():
+    i = 0
+    while i < len(datalist):
+        temp = datalist[i]
+        datalist[i] = int(temp)
+        i = i + 1
+
 def analyse():
+    convert_to_int()
+    percentage = []
     if elements == "yes":
-        i=0
-        while i < len(datalist):
-            temp = datalist[i]
-            datalist[i] = int(temp)
-            i = i + 1
-        result = datalist[2]/datalist[1]
-        percentage = []
-        percentage = percentage.append(result)
+        result = datalist[1]/datalist[0]
+    elif elements == "no":
+        result = datalist[2]/datalist[0]
+    elif elements == "none":
+        result = datalist[3]/datalist[0]
     else:
         print("not done")
     print(datalist)
+    print(result)
 
 print("what do you want?")
 print("Write the elements you want to compare to the number of answers")
