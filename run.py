@@ -21,15 +21,12 @@
 polldata = ""
 percentage = []
 
-print("Input your data in this fashion:")
-print("answer amount,yes answers,no answers,none\n")
-polldata = input()
-print(polldata)
-datalist = polldata.split(",")
-print(datalist)
+datalist = []
+
 result = 0
-elements = ""
+elements = []
 temp = 0
+i = 0
 
 def convert_to_int():
     i = 0
@@ -37,25 +34,37 @@ def convert_to_int():
         temp = datalist[i]
         datalist[i] = int(temp)
         i = i + 1
+    return(datalist)
 
-def analyse():
-    convert_to_int()
+def analyse(intdata):
+    print(intdata)
     percentage = []
-    if elements == "yes":
-        result = datalist[1]/datalist[0]
-    elif elements == "no":
-        result = datalist[2]/datalist[0]
-    elif elements == "none":
-        result = datalist[3]/datalist[0]
-    else:
-        print("not done")
+    for x in elements:
+        if elements[x] == "yes":
+            result = result.append(intdata[1]/intdata[0])
+        elif elements[x] == "no":
+            result = result.append(intdata[2]/intdata[0])
+        elif elements[x] == "none":
+            result = result.append(intdata[3]/intdata[0])
+        else:
+            print("not done")
     print(datalist)
     print(result)
 
+def main():
+    print(convert_to_int())
+    #analyse(datalist)
+
+print("Input your data in this fashion:")
+print("answer amount,yes answers,no answers,none\n")
+polldata = input()
+print(polldata)
+datalist = polldata.split(",")
+print(datalist)
+
+print(convert_to_int())
 print("what do you want?")
 print("Write the elements you want to compare to the number of answers")
-#elements = str(input().split(","))
+elements = input().split(",")
 elements = input()
 print(elements)
-
-analyse()
