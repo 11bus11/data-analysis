@@ -54,20 +54,20 @@ def analyse():
     elements = input().split(",")
     print(elements, "elements")
     print(intlist, "int")
+    result = [name]
     x = 0
     while x < len(elements):
-        result = [name]
         temp = ["temp"]
         if elements[x] == "yes":
             percent = intlist[1]/intlist[0]
             temp[0] = percent
-            result = result.extend(temp)
+            result = result + temp
             print(percent)
             print(result)
         elif elements[x] == "no":
             percent = intlist[2]/intlist[0]
             temp[0] = percent
-            result = result.extend(temp)
+            result = result + temp
             print(percent)
             print(result)
         elif elements[x] == "none":
