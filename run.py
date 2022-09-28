@@ -44,6 +44,16 @@ def convert_to_int():
     print(datalist)
     return datalist
 
+def analyse_info():
+    
+
+def concatenate_result_list(num1, list):
+    temp = ["temp"]
+    tempresult = []
+    temp[0] = list[num1]/list[0]
+    tempresult = tempresult + temp
+    return tempresult
+
 def analyse():
     intlist = convert_to_int()
     elements = []
@@ -57,24 +67,12 @@ def analyse():
     result = [name]
     x = 0
     while x < len(elements):
-        temp = ["temp"]
         if elements[x] == "yes":
-            percent = intlist[1]/intlist[0]
-            temp[0] = percent
-            result = result + temp
-            print(percent)
-            print(result)
+            result = result + concatenate_result_list(1, intlist)
         elif elements[x] == "no":
-            percent = intlist[2]/intlist[0]
-            temp[0] = percent
-            result = result + temp
-            print(percent)
-            print(result)
+            result = result + concatenate_result_list(2, intlist)
         elif elements[x] == "none":
-            percent = intlist[3]/intlist[0]
-            temp[0] = percent
-            result = result + temp
-            print(percent)
+            result = result + concatenate_result_list(3, intlist)
         else:
             print("not done")
         x = x + 1
