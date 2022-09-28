@@ -27,6 +27,10 @@ elements = []
 temp = 0
 i = 0
 
+def validation_universal(tocheck):
+
+
+#Preparations for analysis
 def prepare():
     polldata = input()
     print(polldata)
@@ -34,6 +38,7 @@ def prepare():
     print(datalist)
     return datalist
 
+#Convert the data to intager
 def convert_to_int():
     datalist = prepare()
     i = 0
@@ -44,6 +49,7 @@ def convert_to_int():
     print(datalist)
     return datalist
 
+#Info about how you want to analyse
 def analyse_info():
     tempelements = []
     print("what do you want?")
@@ -51,6 +57,7 @@ def analyse_info():
     tempelements = input().split(",")
     return tempelements
 
+#Adds analysation results to list
 def concatenate_result_list(num1, list):
     temp = ["temp"]
     tempresult = []
@@ -58,6 +65,7 @@ def concatenate_result_list(num1, list):
     tempresult = tempresult + temp
     return tempresult
 
+#Performs analysis
 def analyse():
     intlist = convert_to_int()
     percent = 0
@@ -78,6 +86,7 @@ def analyse():
         x = x + 1
     return result
 
+#How the program runs
 def main():
     print("Input your data in this fashion:")
     print("answer amount,yes answers,no answers,none\n")
