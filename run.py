@@ -45,7 +45,11 @@ def convert_to_int():
     return datalist
 
 def analyse_info():
-    
+    tempelements = []
+    print("what do you want?")
+    print("Write the elements you want to compare to the number of answers")
+    tempelements = input().split(",")
+    return tempelements
 
 def concatenate_result_list(num1, list):
     temp = ["temp"]
@@ -56,14 +60,10 @@ def concatenate_result_list(num1, list):
 
 def analyse():
     intlist = convert_to_int()
-    elements = []
     percent = 0
+    elements = []
     name = input("what kind of data is it?\n")
-    print("what do you want?")
-    print("Write the elements you want to compare to the number of answers")
-    elements = input().split(",")
-    print(elements, "elements")
-    print(intlist, "int")
+    elements = analyse_info()
     result = [name]
     x = 0
     while x < len(elements):
@@ -74,11 +74,8 @@ def analyse():
         elif elements[x] == "none":
             result = result + concatenate_result_list(3, intlist)
         else:
-            print("not done")
+            print("something went wrong")
         x = x + 1
-    
-    print(intlist)
-    print(result, "RES")
     return result
 
 def main():
