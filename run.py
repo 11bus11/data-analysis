@@ -26,33 +26,36 @@ datalist = []
 elements = []
 temp = 0
 i = 0
+name = ""
 
 class Userdata:
-    def __init__(self, value, part)
+    def __init__(self, value, percent, title):
         self.value = value
-        self.part = part
+        self.percent = percent
+        self.title = title
 
 
 def validation_universal(tocheck):
+    print("not done")
 
-
-#Preparations for analysis
+#Preparations for analysis. Creating the objects
 def prepare():
-    polldata = input()
-    print(polldata)
-    datalist = polldata.split(",")
-    print(datalist)
-    return datalist
+    datatitle = input("What kind of data is this?\n")
+    totalanswer = Userdata(input("Write the total number of answers\n"), 1, datatitle)
+    yesanswer = Userdata(input("Write the number of positive answers:\n"), 0, datatitle)
+    noanswer = Userdata(input("Write the number of negative answers:\n"), 0, datatitle)
+    noneanswer = Userdata(input("Write the number of declined answers:\n"), 0, datatitle)
 
 #Convert the data to intager
 def convert_to_int():
-    datalist = prepare()
+    prepare()
     i = 0
     while i < len(datalist):
         temp = datalist[i]
         datalist[i] = int(temp)
         i = i + 1
     print(datalist)
+
     return datalist
 
 #Info about how you want to analyse
@@ -76,9 +79,8 @@ def analyse():
     intlist = convert_to_int()
     percent = 0
     elements = []
-    name = input("what kind of data is it?\n")
     elements = analyse_info()
-    result = [name]
+    result = [input("What kind of data is this?\n")]
     x = 0
     while x < len(elements):
         if elements[x] == "yes":
