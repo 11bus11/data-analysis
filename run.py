@@ -1,23 +1,3 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
-
-#import gspread
-#from google.oauth2.service_account import Credentials
-#SCOPE = [
-#    "https://www.googleapis.com/auth/spreadsheets",
-#    "https://www.googleapis.com/auth/drive.file",
-#    "https://www.googleapis.com/auth/drive"
-#    ]
-#CREDS = Credentials.from_service_account_file("creds.json")
-#SCOPED_CREDS = CREDS.with_scopes(SCOPE)
-#GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-#SHEET = GSPREAD_CLIENT.open("Info-stats")
-
-#no1 = SHEET.worksheet("no1")
-#data = no1.get_all_values()
-#print(data)
-
 polldata = ""
 percentage = []
 
@@ -40,19 +20,22 @@ def validation_universal(tocheck):
 
 #Preparations for analysis. Creating the objects
 def prepare():
+    datalist = []
     datatitle = input("What kind of data is this?\n")
-    totalanswer = Userdata(input("Write the total number of answers\n"), 1, datatitle)
-    yesanswer = Userdata(input("Write the number of positive answers:\n"), 0, datatitle)
-    noanswer = Userdata(input("Write the number of negative answers:\n"), 0, datatitle)
-    noneanswer = Userdata(input("Write the number of declined answers:\n"), 0, datatitle)
+    totalanswer = Userdata(int(input("Write the total number of answers\n")), 1, datatitle)
+    yesanswer = Userdata(int(input("Write the number of positive answers:\n")), 0, datatitle)
+    noanswer = Userdata(int(input("Write the number of negative answers:\n")), 0, datatitle)
+    noneanswer = Userdata(int(input("Write the number of declined answers:\n")), 0, datatitle)
+
+        
 
 #Convert the data to intager
 def convert_to_int():
     prepare()
     i = 0
     while i < len(datalist):
-        temp = datalist[i]
-        datalist[i] = int(temp)
+        temp = datalist[i].value
+        datalist[i].value = int(temp)
         i = i + 1
     print(datalist)
 
@@ -64,12 +47,16 @@ def analyse_info():
     tempelements = input("Write the elements you want to compare to the number of answers\n").split(",")
     return tempelements
 
-#Adds analysation results to list
+#Calculates the percentage 
 def calculate_percent(answer):
     answer.percent = answer.value/totalanswer.value
 
+#Make sure the results are correct and result in 100%
 def calculate_result():
-    return yesanswer.percent
+    if yesanswer.percent + noanswer.percent + noneanswer.percent == 1:
+        print("correct")
+    else:
+        print("incorrect")
 
 #Performs analysis
 def analyse():
