@@ -27,6 +27,12 @@ elements = []
 temp = 0
 i = 0
 
+class Userdata:
+    def __init__(self, value, part)
+        self.value = value
+        self.part = part
+
+
 def validation_universal(tocheck):
 
 
