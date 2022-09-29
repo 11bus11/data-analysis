@@ -61,18 +61,15 @@ def convert_to_int():
 #Info about how you want to analyse
 def analyse_info():
     tempelements = []
-    print("what do you want?")
-    print("Write the elements you want to compare to the number of answers")
-    tempelements = input().split(",")
+    tempelements = input("Write the elements you want to compare to the number of answers\n").split(",")
     return tempelements
 
 #Adds analysation results to list
-def concatenate_result_list(num1, list):
-    temp = ["temp"]
-    tempresult = []
-    temp[0] = list[num1]/list[0]
-    tempresult = tempresult + temp
-    return tempresult
+def calculate_percent(answer):
+    answer.percent = answer.value/totalanswer.value
+
+def calculate_result():
+    return yesanswer.percent
 
 #Performs analysis
 def analyse():
@@ -80,24 +77,24 @@ def analyse():
     percent = 0
     elements = []
     elements = analyse_info()
-    result = [input("What kind of data is this?\n")]
     x = 0
+    print(Userdata)
     while x < len(elements):
         if elements[x] == "yes":
-            result = result + concatenate_result_list(1, intlist)
+            calculate_percent(yesanswer)
+            print(yesanswer.value)
         elif elements[x] == "no":
-            result = result + concatenate_result_list(2, intlist)
+            calculate_percent(noanswer)
         elif elements[x] == "none":
-            result = result + concatenate_result_list(3, intlist)
+            calculate_percent(noneanswer)
         else:
             print("something went wrong")
         x = x + 1
+    result = calculate_result
     return result
 
 #How the program runs
 def main():
-    print("Input your data in this fashion:")
-    print("answer amount,yes answers,no answers,none\n")
     print(analyse())
 
 main()
