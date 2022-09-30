@@ -1,7 +1,7 @@
 polldata = ""
 percentage = []
 
-datalist = []
+alldata = []
 
 elements = []
 temp = 0
@@ -19,27 +19,27 @@ def validation_universal(tocheck):
     print("not done")
 
 #Preparations for analysis. Creating the objects
-def prepare():
-    datalist = []
+def create_object():
+    alldata = []
     datatitle = input("What kind of data is this?\n")
-    totalanswer = Userdata(int(input("Write the total number of answers\n")), 1, datatitle)
-    yesanswer = Userdata(int(input("Write the number of positive answers:\n")), 0, datatitle)
-    noanswer = Userdata(int(input("Write the number of negative answers:\n")), 0, datatitle)
-    noneanswer = Userdata(int(input("Write the number of declined answers:\n")), 0, datatitle)
+    totalanswer = Userdata(input("Write the total number of answers\n"), 1, datatitle)
+    yesanswer = Userdata(input("Write the number of positive answers:\n"), 0, datatitle)
+    noanswer = Userdata(input("Write the number of negative answers:\n"), 0, datatitle)
+    noneanswer = Userdata(input("Write the number of declined answers:\n"), 0, datatitle)
+    return totalanswer, yesanswer, noanswer, noneanswer
 
         
 
 #Convert the data to intager
-def convert_to_int():
-    prepare()
+def convert_to_int(alldata):
+    data = alldata
     i = 0
-    while i < len(datalist):
-        temp = datalist[i].value
-        datalist[i].value = int(temp)
+    while i < len(alldata):
+        temp = alldata[i].value
+        alldata[i].value = int(temp)
         i = i + 1
-    print(datalist)
-
-    return datalist
+    print(alldata)
+    return alldata
 
 #Info about how you want to analyse
 def analyse_info():
@@ -48,8 +48,9 @@ def analyse_info():
     return tempelements
 
 #Calculates the percentage 
-def calculate_percent(answer):
-    answer.percent = answer.value/totalanswer.value
+def calculate_percent(answer1, answer2):
+    answer = answer1.value/answer2.value
+    return answer
 
 #Make sure the results are correct and result in 100%
 def calculate_result():
@@ -60,16 +61,18 @@ def calculate_result():
 
 #Performs analysis
 def analyse():
-    intlist = convert_to_int()
+    totalanswer, yesanswer, noanswer, noneanswer = create_object()
+    datalist = [totalanswer, yesanswer, noanswer, noneanswer]
+    print(yesanswer.value)
+    intlist = convert_to_int(datalist)
     percent = 0
     elements = []
     elements = analyse_info()
     x = 0
-    print(Userdata)
     while x < len(elements):
         if elements[x] == "yes":
-            calculate_percent(yesanswer)
-            print(yesanswer.value)
+            yesanswer.percent = calculate_percent(yesanswer, totalanswer)
+            print(yesanswer.percent)
         elif elements[x] == "no":
             calculate_percent(noanswer)
         elif elements[x] == "none":
