@@ -61,8 +61,9 @@ def calculate_result():
 
 #Performs analysis
 def analyse():
-    totalanswer, yesanswer, noanswer, noneanswer = create_object()
-    datalist = [totalanswer, yesanswer, noanswer, noneanswer]
+    
+    datalist = create_object()
+    totalanswer, yesanswer, noanswer, noneanswer = datalist
     print(yesanswer.value)
     intlist = convert_to_int(datalist)
     percent = 0
@@ -74,9 +75,11 @@ def analyse():
             yesanswer.percent = calculate_percent(yesanswer, totalanswer)
             print(yesanswer.percent)
         elif elements[x] == "no":
-            calculate_percent(noanswer)
+            noanswer.percent = calculate_percent(noanswer, totalanswer)
+            print(noanswer.percent)
         elif elements[x] == "none":
-            calculate_percent(noneanswer)
+            noneanswer.percent = calculate_percent(noneanswer, totalanswer)
+            print(noneanswer.percent)
         else:
             print("something went wrong")
         x = x + 1
