@@ -10,7 +10,7 @@ name = ""
 
 class Userdata:
     def __init__(self, value, percent, title):
-        self.value = value
+        self.value = int(value)
         self.percent = percent
         self.title = title
 
@@ -28,18 +28,6 @@ def create_object():
     noneanswer = Userdata(input("Write the number of declined answers:\n"), 0, datatitle)
     return totalanswer, yesanswer, noanswer, noneanswer
 
-        
-
-#Convert the data to intager
-def convert_to_int(alldata):
-    data = alldata
-    i = 0
-    while i < len(alldata):
-        temp = alldata[i].value
-        alldata[i].value = int(temp)
-        i = i + 1
-    print(alldata)
-    return alldata
 
 #Info about how you want to analyse
 def analyse_info():
@@ -62,11 +50,9 @@ def calculate_result(l):
 
 #Performs analysis
 def analyse():
-    
     datalist = create_object()
     totalanswer, yesanswer, noanswer, noneanswer = datalist
     print(yesanswer.value)
-    intlist = convert_to_int(datalist)
     elements = []
     elements = analyse_info()
     for item in elements:
