@@ -53,8 +53,9 @@ def calculate_percent(answer1, answer2):
     return answer
 
 #Make sure the results are correct and result in 100%
-def calculate_result():
-    if yesanswer.percent + noanswer.percent + noneanswer.percent == 1:
+def calculate_result(l):
+    totalanswer, yesanswer, noanswer, noneanswer = l
+    if yesanswer.value + noanswer.value + noneanswer.value == totalanswer.value:
         print("correct")
     else:
         print("incorrect")
@@ -66,24 +67,21 @@ def analyse():
     totalanswer, yesanswer, noanswer, noneanswer = datalist
     print(yesanswer.value)
     intlist = convert_to_int(datalist)
-    percent = 0
     elements = []
     elements = analyse_info()
-    x = 0
-    while x < len(elements):
-        if elements[x] == "yes":
+    for item in elements:
+        if item == "yes":
             yesanswer.percent = calculate_percent(yesanswer, totalanswer)
             print(yesanswer.percent)
-        elif elements[x] == "no":
+        elif item == "no":
             noanswer.percent = calculate_percent(noanswer, totalanswer)
             print(noanswer.percent)
-        elif elements[x] == "none":
+        elif item == "none":
             noneanswer.percent = calculate_percent(noneanswer, totalanswer)
             print(noneanswer.percent)
         else:
             print("something went wrong")
-        x = x + 1
-    result = calculate_result
+    result = calculate_result(datalist)
     return result
 
 #How the program runs
