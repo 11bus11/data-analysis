@@ -30,7 +30,6 @@ def validation_universal():
 
 #Preparations for analysis. Creating the objects
 def create_object():
-    alldata = []
     datatitle = input("What kind of data is this?\n")
 
     totalanswer = Userdata(0, 1, datatitle)
@@ -68,13 +67,18 @@ def calculate_result(l):
     if yesanswer.value + noanswer.value + noneanswer.value == totalanswer.value:
         print("correct")
     else:
-        print("incorrect")
+        print("The number of answers are not the same as you stated.")
+        raise Exception("Doublecheck your numbers and try again.")
+
+def convert_to_str(elements):
+
 
 #Performs analysis
 def analyse():
     datalist = create_object()
     totalanswer, yesanswer, noanswer, noneanswer = datalist
     print(yesanswer.value)
+    result = calculate_result(datalist)
     elements = []
     elements = analyse_info()
     for item in elements:
@@ -89,8 +93,9 @@ def analyse():
             print(noneanswer.percent)
         else:
             print("something went wrong")
-    result = calculate_result(datalist)
-    return result
+    convert_to_str(elements)
+    endresult = "Positive: "
+    return endresult
 
 #How the program runs
 def main():
