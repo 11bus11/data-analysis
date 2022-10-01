@@ -15,17 +15,39 @@ class Userdata:
         self.title = title
 
 
-def validation_universal(tocheck):
-    print("not done")
+def validation_universal():
+    status = False
+    while status == False:
+        try:
+            tocheck = input()
+            tocheck = int(tocheck)
+        except ValueError:
+            print("The input can not be made numeric. Try again:")
+        else:
+            status = True
+    return tocheck
+        
 
 #Preparations for analysis. Creating the objects
 def create_object():
     alldata = []
     datatitle = input("What kind of data is this?\n")
-    totalanswer = Userdata(input("Write the total number of answers\n"), 1, datatitle)
-    yesanswer = Userdata(input("Write the number of positive answers:\n"), 0, datatitle)
-    noanswer = Userdata(input("Write the number of negative answers:\n"), 0, datatitle)
-    noneanswer = Userdata(input("Write the number of declined answers:\n"), 0, datatitle)
+
+    totalanswer = Userdata(0, 1, datatitle)
+    print("Write the total number of answers:")
+    totalanswer.value = validation_universal()
+
+    yesanswer = Userdata(0, 0, datatitle)
+    print("Write the number of positive answers:")
+    yesanswer.value = validation_universal()
+
+    noanswer = Userdata(0, 0, datatitle)
+    print("Write the number of negative answers:")
+    noanswer.value = validation_universal()
+
+    noneanswer = Userdata(0, 0, datatitle)
+    print("Write the number of avoided answers:")
+    noneanswer.value = validation_universal()
     return totalanswer, yesanswer, noanswer, noneanswer
 
 
