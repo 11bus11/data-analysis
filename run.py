@@ -1,3 +1,17 @@
+import gspread
+from google.oauth2.service_account import Credentials
+SCOPE = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive.file",
+    "https://www.googleapis.com/auth/drive"
+    ]
+CREDS = Credentials.from_service_account_file("creds.json")
+SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+SHEET = GSPREAD_CLIENT.open("Info-stats")
+
+no1 = SHEET.worksheet("no1")
+
 polldata = ""
 percentage = []
 
@@ -70,7 +84,7 @@ def calculate_result(l):
         print("The number of answers are not the same as you stated.")
         raise Exception("Doublecheck your numbers and try again.")
 
-def convert_to_str(elements):
+#def convert_to_str(elements):
 
 
 #Performs analysis
@@ -93,7 +107,7 @@ def analyse():
             print(noneanswer.percent)
         else:
             print("something went wrong")
-    convert_to_str(elements)
+    #convert_to_str(elements)
     endresult = "Positive: "
     return endresult
 
