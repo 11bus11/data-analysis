@@ -50,3 +50,12 @@ If the number of answers are not the same as the supposed total answers (user in
 ### Potential features
 - Telling the user which option got the most percent.
 - The user being able to name the different options.
+
+## Testing
+### Logic testing
+I tested the logic by:
+- Giving the program inputs and comparing the result to my own calculations.
+- Giving the program an invalid input to make sure it reacts as expected. Did this on all inputs. 
+
+### Linter
+Due to the pep8 website being down I used the version you can download in gitpod. 
