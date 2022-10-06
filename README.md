@@ -59,3 +59,6 @@ I tested the logic by:
 
 ### Linter
 Due to the pep8 website being down I used the version you can download in gitpod. 
+
+## Credits
+I got some help from Robin Koelewijn (Data Scientist) in order to propperly understand things I found confusing. He also helped me to get on the right track when I got stuck. The API part is copied from the "Love sandwiches" project, and I got some help from Robin.
