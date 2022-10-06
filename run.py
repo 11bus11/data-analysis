@@ -33,7 +33,7 @@ def validation_universal():
     status = False
     while status == False:
         try:
-            tocheck = input()
+            tocheck = input("\n")
             tocheck = int(tocheck)
         except ValueError:
             print("The input can not be made numeric. Try again:")
