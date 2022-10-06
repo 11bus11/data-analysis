@@ -35,37 +35,52 @@ class Userdata:
 
 
 def validation_universal():
+    valueyes = 0
+    valueno = 0
+    valuenone = 0
+    amount = 0
     status = False
     while status == False:
         try:
-            tocheck = input("\n")
-            tocheck = int(tocheck)
+            tocheck = input("Which question do you want to analyse?\n")
+            row = int(tocheck) + 1
         except ValueError:
             print("The input can not be made numeric. Try again:")
         else:
             status = True
-    return tocheck
+
+    columnlist = answers.col_values(row)
+    for column in columnlist:
+        try:
+            if column == "yes":
+                valueyes += 1
+            elif column == "no":
+                valueno += 1
+            elif column == "none":
+                valuenone += 1
+        except ValueError:
+            print("The input can not be made numeric. Check your spreadsheet.")
+            quit()
+        valuetotal = len(columnlist) -1
+    return valuetotal, valueyes, valueno, valuenone
         
 
 #Preparations for analysis. Creating the objects
 def create_object():
     datatitle = input("What kind of data is this?\n")
+    valuelist = validation_universal()
 
     totalanswer = Userdata(0, 1, datatitle)
-    print("Write the total number of answers:")
-    totalanswer.value = validation_universal()
+    totalanswer.value = valuelist[0]
 
     yesanswer = Userdata(0, 0, datatitle)
-    print("Write the number of positive answers:")
-    yesanswer.value = validation_universal()
+    yesanswer.value = valuelist[1]
 
     noanswer = Userdata(0, 0, datatitle)
-    print("Write the number of negative answers:")
-    noanswer.value = validation_universal()
+    noanswer.value = valuelist[2]
 
     noneanswer = Userdata(0, 0, datatitle)
-    print("Write the number of avoided answers:")
-    noneanswer.value = validation_universal()
+    noneanswer.value = valuelist[3]
     return totalanswer, yesanswer, noanswer, noneanswer
 
 
@@ -87,7 +102,8 @@ def calculate_result(l):
         print("correct")
     else:
         print("The number of answers are not the same as you stated.")
-        raise Exception("Doublecheck your numbers and try again.")
+        print("Check the values in your spreadsheet")
+        quit()
 
 #def convert_to_str(elements):
 
@@ -95,26 +111,13 @@ def calculate_result(l):
 #Performs analysis
 def analyse():
     datalist = create_object()
+    print(datalist)
     totalanswer, yesanswer, noanswer, noneanswer = datalist
     print(yesanswer.value)
     result = calculate_result(datalist)
-    elements = []
-    elements = analyse_info()
-    for item in elements:
-        if item == "yes":
-            yesanswer.percent = calculate_percent(yesanswer, totalanswer)
-            print(yesanswer.percent)
-        elif item == "no":
-            noanswer.percent = calculate_percent(noanswer, totalanswer)
-            print(noanswer.percent)
-        elif item == "none":
-            noneanswer.percent = calculate_percent(noneanswer, totalanswer)
-            print(noneanswer.percent)
-        else:
-            print("something went wrong")
-    #convert_to_str(elements)
-    endresult = "Positive: "
-    return endresult
+    for item in datalist:
+        item.percent = calculate_percent(item, totalanswer)
+    return datalist
 
 #How the program runs
 def main():
