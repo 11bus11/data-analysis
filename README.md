@@ -1,5 +1,8 @@
 # Data analysis
-This is the third project for the Code Institute full stack software development course. The focur for this project is python. I chose to do some simple data analysis.
+[Live site](https://data-analysis-ci.herokuapp.com/)
+
+This is the third project for the Code Institute full stack software development course. The focus for this project is python. I chose to do some simple data analysis. The flow chart is shown below.
+![Flow chart](assets/flowchart.png)
 
 ## User stories
 I want the user to be able to:
@@ -16,6 +19,7 @@ It can also handle inputs that would cause a ValueError (if you give the program
 If the number of answers are not the same as the supposed total answers (user input), the program will end. Before endig it the user will get be told that the nomber of answers are not the same as the inputed total answers. 
 
 ### Potential features
+- Making it possible to analyse more than one question.
 - Telling the user which option got the most percent.
 - The user being able to name the different options.
 
@@ -40,7 +44,23 @@ I tested the logic by:
 ### Linter
 Due to the pep8 website being down I used the version you can download in gitpod. 
 
-###Fixed bugs
+### Deployment
+This project was deployed with Heroku. 
+- Create an account at [Heroku](heroku.com), and do not forget you need to confirm your e-mail to do this.
+- Create a list of dependencies in a text file named requirements (pip3 freeze > requirements.txt).
+- Create an app by clicking the "create a new app" button found on the dashboard.
+  - Choose a unique app-name.
+  - Choose your region and click "create app"
+- Click on settings (for the app).
+  - Find the Config Vars section and add potential files that you cannot upload to github. For example API credentials. KEY is the title, and VALUE is the content.
+  - Add buildpacks (below Config Vars). For this project I installed Python and Node.js. Make sure they are in the correct order.
+- Go to the deploy section.
+ - Choose to deploy from github.
+ - Connect your account and choose a repository to deploy from.
+ - Choose either Automatic or Manual deployment (recommended).
+- Make sure the live site is working.
+
+### Fixed bugs
 - In the beginning of the project I created a function where I needed to return multiple values. Since i did not know how to do this in an effective way, I chose to ask a friend to explain it to me. 
 - Most other buge was caused by me forgetting something small, and was fixed very easily then i finally realised what I had forgotten. One example of this is then i deployed the project to heroku, and the spreadsheet could not be reached by the program. I had forgotten to share the document...
 
