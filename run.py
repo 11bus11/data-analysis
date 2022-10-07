@@ -105,8 +105,16 @@ def calculate_result(l):
         print("Check the values in your spreadsheet")
         quit()
 
-#def convert_to_str(elements):
+def list_result_create(question, resultdata):
+    qnum = "question" + question
+    listresult = [qnum, resultdata[1], resultdata[2], resultdata[3], resultdata[0]]
+    return listresult
 
+def export_result(listresult):
+    for item in listresult:
+        column = 2
+        current = "B" + str(column)
+        output.update(current, item)
 
 #Performs analysis
 def analyse():
@@ -114,13 +122,11 @@ def analyse():
     print(datalist)
     totalanswer, yesanswer, noanswer, noneanswer = datalist
     print(yesanswer.value)
-    result = calculate_result(datalist)
-    for item in datalist:
-        item.percent = calculate_percent(item, totalanswer)
-    return datalist
+    result = export_result(list_result_create(totalanswer.title, calculate_result(datalist)))
+    print("Spreadsheet now updated")
 
 #How the program runs
 def main():
-    print(analyse())
+    analyse()
 
 main()
