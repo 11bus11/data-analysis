@@ -42,26 +42,32 @@ def validation_universal():
     status = False
     while status == False:
         try:
-            tocheck = input("Which question do you want to analyse?\n")
-            row = int(tocheck) + 1
+            question = input("Which question do you want to analyse? Write a number\n")
+            row = int(question) + 1
         except ValueError:
-            print("The input can not be made numeric. Try again:")
+            print("The input is not a number. Try again:")
         else:
             status = True
 
     columnlist = answers.col_values(row)
+    if len(columnlist) == 0:
+        quit()
     for column in columnlist:
-        try:
-            if column == "yes":
-                valueyes += 1
-            elif column == "no":
-                valueno += 1
-            elif column == "none":
-                valuenone += 1
-        except ValueError:
-            print("The input can not be made numeric. Check your spreadsheet.")
+        if column == "yes":
+            valueyes += 1
+        elif column == "no":
+            valueno += 1
+        elif column == "none":
+            valuenone += 1
+        elif column == str("question " + question):
+            continue
+        else:
+            print("The inputs has to be either yes, no or none.")
+            print("See the imported values below:")
+            print(columnlist)
+            print("Check the spreadsheet.")
             quit()
-        valuetotal = len(columnlist) -1
+    valuetotal = len(columnlist) -1
     return valuetotal, valueyes, valueno, valuenone
         
 
@@ -83,25 +89,18 @@ def create_object():
     noneanswer.value = valuelist[3]
     return totalanswer, yesanswer, noanswer, noneanswer
 
-
-#Info about how you want to analyse
-def analyse_info():
-    tempelements = []
-    tempelements = input("Write the elements you want to compare to the number of answers\n").split(",")
-    return tempelements
-
 #Calculates the percentage 
 def calculate_percent(answer1, answer2):
     answer = answer1.value/answer2.value
     return answer
 
-#Make sure the results are correct and result in 100%
-def calculate_result(l):
+#Make sure the results are correct and combined is 100%. 
+def double_validate_result(l):
     totalanswer, yesanswer, noanswer, noneanswer = l
     if yesanswer.value + noanswer.value + noneanswer.value == totalanswer.value:
-        print("correct")
+        pass
     else:
-        print("The number of answers are not the same as you stated.")
+        print("The number of answers are not correct.")
         print("Check the values in your spreadsheet")
         quit()
 
@@ -122,11 +121,10 @@ def analyse():
     print(datalist)
     totalanswer, yesanswer, noanswer, noneanswer = datalist
     print(yesanswer.value)
-    result = export_result(list_result_create(totalanswer.title, calculate_result(datalist)))
+    result = double_validate_result(datalist)
+    for item in datalist:
+        item.percent = calculate_percent(item, totalanswer)
+    
     print("Spreadsheet now updated")
 
-#How the program runs
-def main():
-    analyse()
-
-main()
+analyse()
