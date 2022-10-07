@@ -20,6 +20,18 @@ If the number of answers are not the same as the supposed total answers (user in
 - The user being able to name the different options.
 
 ## Testing
+### User stories
+The user is able to:
+- Import data from a google sheets document.
+  - The program imports the needed data from a google sheets document named "data_analysis".
+- Get the answer amount of each option in percent.
+ - The program calculated the percentages.
+- Export the result to a google sheets document.
+ - The results are exported to the google sheets document.
+
+### Peer review
+I asked a few people to try my program. They tried to break it by giving invalid inputs.
+
 ### Logic testing
 I tested the logic by:
 - Giving the program inputs and comparing the result to my own calculations.
@@ -27,6 +39,10 @@ I tested the logic by:
 
 ### Linter
 Due to the pep8 website being down I used the version you can download in gitpod. 
+
+###Fixed bugs
+- In the beginning of the project I created a function where I needed to return multiple values. Since i did not know how to do this in an effective way, I chose to ask a friend to explain it to me. 
+- Most other buge was caused by me forgetting something small, and was fixed very easily then i finally realised what I had forgotten. One example of this is then i deployed the project to heroku, and the spreadsheet could not be reached by the program. I had forgotten to share the document...
 
 ## Credits
 I got some help from Robin Koelewijn (Data Scientist) in order to propperly understand things I found confusing. He also helped me to get on the right track when I got stuck. The API part is copied from the "Love sandwiches" project, and I got some help from Robin.
