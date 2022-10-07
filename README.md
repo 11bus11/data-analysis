@@ -29,9 +29,9 @@ The user is able to:
 - Import data from a google sheets document.
   - The program imports the needed data from a google sheets document named "data_analysis".
 - Get the answer amount of each option in percent.
- - The program calculated the percentages.
+  - The program calculated the percentages.
 - Export the result to a google sheets document.
- - The results are exported to the google sheets document.
+  - The results are exported to the google sheets document.
 
 ### Peer review
 I asked a few people to try my program. They tried to break it by giving invalid inputs.
@@ -55,14 +55,14 @@ This project was deployed with Heroku.
   - Find the Config Vars section and add potential files that you cannot upload to github. For example API credentials. KEY is the title, and VALUE is the content.
   - Add buildpacks (below Config Vars). For this project I installed Python and Node.js. Make sure they are in the correct order.
 - Go to the deploy section.
- - Choose to deploy from github.
- - Connect your account and choose a repository to deploy from.
- - Choose either Automatic or Manual deployment (recommended).
+  - Choose to deploy from github.
+  - Connect your account and choose a repository to deploy from.
+  - Choose either Automatic or Manual deployment (recommended).
 - Make sure the live site is working.
 
 ### Fixed bugs
-- In the beginning of the project I created a function where I needed to return multiple values. Since i did not know how to do this in an effective way, I chose to ask a friend to explain it to me. 
-- Most other buge was caused by me forgetting something small, and was fixed very easily then i finally realised what I had forgotten. One example of this is then i deployed the project to heroku, and the spreadsheet could not be reached by the program. I had forgotten to share the document...
+- In the beginning of the project I created a function where I needed to return multiple values. Since I did not know how to do this in an effective way, I chose to ask a friend to explain it to me. 
+- Most other buge was caused by me forgetting something small, and was fixed very easily then I finally realised what I had forgotten. One example of this is then I deployed the project to heroku, and the spreadsheet could not be reached by the program. I had forgotten to share the document...
 
 ## Credits
 I got some help from Robin Koelewijn (Data Scientist) in order to propperly understand things I found confusing. He also helped me to get on the right track when I got stuck. The API part is copied from the "Love sandwiches" project, and I got some help from Robin.
