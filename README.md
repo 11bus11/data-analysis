@@ -4,19 +4,29 @@
 This is the third project for the Code Institute full stack software development course. The focus for this project is python. I chose to do some simple data analysis. The flow chart is shown below.
 ![Flow chart](assets/flowchart.png)
 
-## User stories
+## UX - user experience
+### User stories
 I want the user to be able to:
 - Import data from a google sheets document.
 - Get the answer amount of each option in percent.
 - Export the result to a google sheets document.
 
+### Instructions and information
+I have done my best to make sure all users understands what they should do. I have given clear instructions and explained what the problems are when endng the program due to input errors.
+
 ## Features
 The program takes your numbers, and then it calculates how many prcent are positive, negative and avoided answers.  
 
-### Error handling
-It can also handle inputs that would cause a ValueError (if you give the program something that cant be converted to an intages). If there is a ValueError, the program will ask you to input a number instead. It will continue doing that until you comply.
+### Google sheets
+The program gets the data from a google sheets document. The layout of this document looks like this:
+![gspread document](assets/gspread_documents-jpg)
 
-If the number of answers are not the same as the supposed total answers (user input), the program will end. Before endig it the user will get be told that the nomber of answers are not the same as the inputed total answers. 
+I could access the document from my program with the help of 2 API:s. Google Drive API and Google Sheets API. The instructions on how to use these were from the Code Institute "Love sandwiches" project, and the API:s can be found here: [Google API:s](https://console.cloud.google.com/apis/library)
+
+### Error handling
+It can also handle inputs that would cause a ValueError (if you give the program something that cant be converted to an intages). If there is a ValueError, the program will ask you to input a number instead. It will continue doing that until you comply. This is used when the user writes which question they want analysed.
+
+If an input is not one of the three supported ones (yes, no, none), or if the number of answers are not the same as the supposed total answers (Extra validation due to it being very important that it is correct), the program will end. Before endig it the user will get be told that there is a problem, what the problem most likely is (based on which part of the input validation it was that failed) and to check the spreadsheet.
 
 ### Potential features
 - Making it possible to analyse more than one question.
