@@ -42,10 +42,10 @@ def validation_universal():
     status = False
     while status == False:
         try:
-            question = input("Which question do you want to analyse? Write a number\n")
+            question = input("Which question do you want to analyse? Write a whole number\n")
             row = int(question) + 1
         except ValueError:
-            print("The input is not a number. Try again:")
+            print("The input is not a whole number. Try again:")
         else:
             status = True
 
@@ -107,7 +107,6 @@ def double_validate_result(l):
 def list_result_create(title, resultdata):
     qtitle = title
     listresult = [qtitle, resultdata[1], resultdata[2], resultdata[3], resultdata[0]]
-    print(listresult)
     return listresult
 
 def export_result(listresult):
@@ -115,7 +114,7 @@ def export_result(listresult):
     row = 0
     while row < len(rowlist):
         current = rowlist[row]
-        print(current)
+        print(current + " is being updated...")
         if current == "B1":
             output.update(current, listresult[row])
         else:
@@ -125,16 +124,16 @@ def export_result(listresult):
 #Performs analysis
 def analyse():
     datalist = create_object()
-    print(datalist)
     totalanswer, yesanswer, noanswer, noneanswer = datalist
-    print(yesanswer.value)
     result = double_validate_result(datalist)
     for item in datalist:
         item.percent = calculate_percent(item, totalanswer)
     finaldata = [totalanswer.percent, yesanswer.percent, noanswer.percent, noneanswer.percent]
-    print(finaldata)
     export_result(list_result_create(totalanswer.title, finaldata))
-    print("Spreadsheet now updated")
-    print("All values are in percent")
+    print("Spreadsheet now updated!")
+    print("REMEMBER: All values are in percent.\n")
+    print("You can now find the resulting information in the spreadsheet (output).")
+    print("Run the program again to analyse a different question.")
+    print("Program by: Erik Vodopivec Forsman")
 
 analyse()
