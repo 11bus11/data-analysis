@@ -2,7 +2,7 @@
 [Live site](https://data-analysis-ci.herokuapp.com/)
 
 This is the third project for the Code Institute full stack software development course. The focus for this project is python. I chose to do some simple data analysis. The flow chart is shown below.
-![Flow chart](assets/flowchart.png)
+![Flow chart](docs/flowchart.PNG)
 
 ## UX - user experience
 ### User stories
@@ -19,9 +19,10 @@ The program takes your numbers, and then it calculates how many prcent are posit
 
 ### Google sheets
 The program gets the data from a google sheets document. The layout of this document looks like this:
-![gspread document](assets/gspread_documents-jpg)
+![gspread answers document](docs/sheet_answers.PNG)
+![gspread output document](docs/sheet_output.PNG)
 
-I could access the document from my program with the help of 2 API:s. Google Drive API and Google Sheets API. The instructions on how to use these were from the Code Institute "Love sandwiches" project, and the API:s can be found here: [Google API:s](https://console.cloud.google.com/apis/library)
+I could access the document from my program with the help of 2 API:s. Google Drive API and Google Sheets API. The instructions on how to use these were from the Code Institute "Love sandwiches" project, and the API:s can be found here: [Google API:s](https://console.cloud.google.com/apis/library). With these API:s I am able to, through the program, acces the content of a chosen google sheets document, and manipulate it.
 
 ### Error handling
 It can also handle inputs that would cause a ValueError (if you give the program something that cant be converted to an intages). If there is a ValueError, the program will ask you to input a number instead. It will continue doing that until you comply. This is used when the user writes which question they want analysed.
@@ -75,6 +76,6 @@ This project was deployed with Heroku.
 - Most other buge was caused by me forgetting something small, and was fixed very easily then I finally realised what I had forgotten. One example of this is then I deployed the project to heroku, and the spreadsheet could not be reached by the program. I had forgotten to share the document...
 
 ## Credits
-I got some help from Robin Koelewijn (Data Scientist) in order to propperly understand things I found confusing. He also helped me to get on the right track when I got stuck. The API part is copied from the "Love sandwiches" project, and I got some help from Robin.
+I got some help from Robin Koelewijn (Data Scientist) in order to propperly understand things I found confusing. He also helped me to get on the right track when I got stuck. The API part is copied from the "Love sandwiches" project, and I got some help from Robin. The instructions for how to deploy the project also came from "Love sandwiches".
 
 Erik Vodopivec Forsman, 2022
