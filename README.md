@@ -2,7 +2,7 @@
 [Live site](https://data-analysis-ci.herokuapp.com/)
 
 This is the third project for the Code Institute full stack software development course. The focus for this project is python. I chose to do some simple data analysis. The flow chart is shown below.
-![Flow chart](docs/flowchart.PNG)
+![Flow chart](docs/flowchart.png)
 
 ## UX - user experience
 ### User stories
