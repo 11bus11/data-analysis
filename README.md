@@ -45,7 +45,7 @@ The user is able to:
   - The results are exported to the google sheets document.
 
 ### Peer review
-I asked a few people to try my program. They tried to break it by giving invalid inputs.
+I asked a few people to try my program. They tried to break it by giving invalid inputs. One of the people found a problem with the program not telling you the inputed number has to be whole. Changed the instructions to clarify this.
 
 ### Logic testing
 I tested the logic by:
@@ -53,7 +53,9 @@ I tested the logic by:
 - Giving the program an invalid input to make sure it reacts as expected. Did this on all inputs. 
 
 ### Linter
-Due to the pep8 website being down I used the version you can download in gitpod. 
+Due to the pep8 website being down I used a version you can download in gitpod (recommended by "kevin_ci" on slack). The linter is run thru gitpod/VS Code and it is called "pycodestyle". 
+
+It showed some errors innitially, but i managed to fix most of them. All that is left is some errors saying the line is to long. I was not able to fix those. Every other error innitially shown is fixed.
 
 ### Deployment
 This project was deployed with Heroku. 
@@ -74,6 +76,9 @@ This project was deployed with Heroku.
 ### Fixed bugs
 - In the beginning of the project I created a function where I needed to return multiple values. Since I did not know how to do this in an effective way, I chose to ask a friend to explain it to me. 
 - Most other buge was caused by me forgetting something small, and was fixed very easily then I finally realised what I had forgotten. One example of this is then I deployed the project to heroku, and the spreadsheet could not be reached by the program. I had forgotten to share the document...
+
+### Unfixed bugs
+- It is not really a bug, but it is not ideal. You can input a number that is not whole as the question choice, and the program wont stop you right away. This means you do not get the option to input another number instead. I did not have enough time to solve this.
 
 ## Credits
 I got some help from Robin Koelewijn (Data Scientist) in order to propperly understand things I found confusing. He also helped me to get on the right track when I got stuck. The API part is copied from the "Love sandwiches" project, and I got some help from Robin. The instructions for how to deploy the project also came from "Love sandwiches".
