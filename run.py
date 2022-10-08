@@ -17,17 +17,10 @@ output = SHEET.worksheet("output")
 
 data = answers.get_all_values()
 
-polldata = ""
-percentage = []
-
-alldata = []
-
-elements = []
-temp = 0
-i = 0
-name = ""
-
 class Userdata:
+    """
+    Defines the class used for the userdata.
+    """
     def __init__(self, value, percent, title):
         self.value = int(value)
         self.percent = percent
@@ -35,6 +28,10 @@ class Userdata:
 
 
 def validation_universal():
+    """
+    Makes sure all the inputs are the correct type.
+    Also checks that the chosen question exist.
+    """
     valueyes = 0
     valueno = 0
     valuenone = 0
@@ -42,7 +39,7 @@ def validation_universal():
     status = False
     while status == False:
         try:
-            question = input("Which question do you want to analyse? Write a whole number\n")
+            question = input("Which question do you want to analyse? Write a whole number.\n")
             row = int(question) + 1
         except ValueError:
             print("The input is not a whole number. Try again:")
@@ -51,6 +48,8 @@ def validation_universal():
 
     columnlist = answers.col_values(row)
     if len(columnlist) == 0:
+        print("The question you chose does not exist.")
+        print("Make sure the data is added correctly to the spreadsheet.")
         quit()
     for column in columnlist:
         if column == "yes":
@@ -73,6 +72,10 @@ def validation_universal():
 
 #Preparations for analysis. Creating the objects
 def create_object():
+    """
+    Creates the objects used t keep track of all information.
+    The objects are for the differrent options and total numbers of answers.
+    """
     datatitle = input("What kind of question is this?\n")
     valuelist = validation_universal()
 
@@ -91,11 +94,17 @@ def create_object():
 
 #Calculates the percentage 
 def calculate_percent(answer1, answer2):
+    """
+    Calculates how many percent of the answers each option are.
+    """
     answer = answer1.value/answer2.value
     return answer
 
 #Make sure the results are correct and combined is 100%. 
 def double_validate_result(l):
+    """
+    Double-check that the amount of answers are correct.
+    """
     totalanswer, yesanswer, noanswer, noneanswer = l
     if yesanswer.value + noanswer.value + noneanswer.value == totalanswer.value:
         pass
@@ -105,11 +114,18 @@ def double_validate_result(l):
         quit()
 
 def list_result_create(title, resultdata):
+    """
+    Creates a list of the results.
+    Will be used in the export_result function.
+    """
     qtitle = title
     listresult = [qtitle, resultdata[1], resultdata[2], resultdata[3], resultdata[0]]
     return listresult
 
 def export_result(listresult):
+    """
+    Updates the outputs spreadsheet.
+    """
     rowlist = ["B1", "B2", "B3", "B4", "B5"]
     row = 0
     while row < len(rowlist):
@@ -122,7 +138,14 @@ def export_result(listresult):
         row += 1
 
 #Performs analysis
-def analyse():
+def main():
+    """
+    The function that tells the program how to run.
+    """
+    print("This program checks the amounts (in percent) of each options.")
+    print("Make sure the correct data in the spreadsheet is correct.")
+    print("Also make sure the layout of the spreadsheet is correct.")
+    print("Check the READ.me to see the layout.")
     datalist = create_object()
     totalanswer, yesanswer, noanswer, noneanswer = datalist
     result = double_validate_result(datalist)
@@ -136,4 +159,4 @@ def analyse():
     print("Run the program again to analyse a different question.")
     print("Program by: Erik Vodopivec Forsman")
 
-analyse()
+main()
