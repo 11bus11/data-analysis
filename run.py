@@ -73,7 +73,7 @@ def validation_universal():
 
 #Preparations for analysis. Creating the objects
 def create_object():
-    datatitle = input("What kind of data is this?\n")
+    datatitle = input("What kind of question is this?\n")
     valuelist = validation_universal()
 
     totalanswer = Userdata(0, 1, datatitle)
@@ -104,16 +104,23 @@ def double_validate_result(l):
         print("Check the values in your spreadsheet")
         quit()
 
-def list_result_create(question, resultdata):
-    qnum = "question" + question
-    listresult = [qnum, resultdata[1], resultdata[2], resultdata[3], resultdata[0]]
+def list_result_create(title, resultdata):
+    qtitle = title
+    listresult = [qtitle, resultdata[1], resultdata[2], resultdata[3], resultdata[0]]
+    print(listresult)
     return listresult
 
 def export_result(listresult):
-    for item in listresult:
-        column = 2
-        current = "B" + str(column)
-        output.update(current, item)
+    rowlist = ["B1", "B2", "B3", "B4", "B5"]
+    row = 0
+    while row < len(rowlist):
+        current = rowlist[row]
+        print(current)
+        if current == "B1":
+            output.update(current, listresult[row])
+        else:
+            output.update(current, listresult[row]*100)
+        row += 1
 
 #Performs analysis
 def analyse():
@@ -124,7 +131,10 @@ def analyse():
     result = double_validate_result(datalist)
     for item in datalist:
         item.percent = calculate_percent(item, totalanswer)
-    
+    finaldata = [totalanswer.percent, yesanswer.percent, noanswer.percent, noneanswer.percent]
+    print(finaldata)
+    export_result(list_result_create(totalanswer.title, finaldata))
     print("Spreadsheet now updated")
+    print("All values are in percent")
 
 analyse()
