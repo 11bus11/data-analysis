@@ -17,6 +17,7 @@ output = SHEET.worksheet("output")
 
 data = answers.get_all_values()
 
+
 class Userdata:
     """
     Defines the class used for the userdata.
@@ -35,9 +36,8 @@ def validation_universal():
     valueyes = 0
     valueno = 0
     valuenone = 0
-    amount = 0
     status = False
-    while status == False:
+    while status is False:
         try:
             question = input("Which question do you want to analyse? Write a whole number.\n")
             row = int(question) + 1
@@ -66,11 +66,10 @@ def validation_universal():
             print(columnlist)
             print("Check the spreadsheet.")
             quit()
-    valuetotal = len(columnlist) -1
+    valuetotal = len(columnlist) - 1
     return valuetotal, valueyes, valueno, valuenone
-        
 
-#Preparations for analysis. Creating the objects
+
 def create_object():
     """
     Creates the objects used t keep track of all information.
@@ -92,7 +91,7 @@ def create_object():
     noneanswer.value = valuelist[3]
     return totalanswer, yesanswer, noanswer, noneanswer
 
-#Calculates the percentage 
+
 def calculate_percent(answer1, answer2):
     """
     Calculates how many percent of the answers each option are.
@@ -100,18 +99,19 @@ def calculate_percent(answer1, answer2):
     answer = answer1.value/answer2.value
     return answer
 
-#Make sure the results are correct and combined is 100%. 
-def double_validate_result(l):
+
+def double_validate_result(list):
     """
     Double-check that the amount of answers are correct.
     """
-    totalanswer, yesanswer, noanswer, noneanswer = l
+    totalanswer, yesanswer, noanswer, noneanswer = list
     if yesanswer.value + noanswer.value + noneanswer.value == totalanswer.value:
         pass
     else:
         print("The number of answers are not correct.")
         print("Check the values in your spreadsheet")
         quit()
+
 
 def list_result_create(title, resultdata):
     """
@@ -121,6 +121,7 @@ def list_result_create(title, resultdata):
     qtitle = title
     listresult = [qtitle, resultdata[1], resultdata[2], resultdata[3], resultdata[0]]
     return listresult
+
 
 def export_result(listresult):
     """
@@ -137,7 +138,7 @@ def export_result(listresult):
             output.update(current, listresult[row]*100)
         row += 1
 
-#Performs analysis
+
 def main():
     """
     The function that tells the program how to run.
@@ -155,8 +156,10 @@ def main():
     export_result(list_result_create(totalanswer.title, finaldata))
     print("Spreadsheet now updated!")
     print("REMEMBER: All values are in percent.\n")
-    print("You can now find the resulting information in the spreadsheet (output).")
+    print("You can now find the resulting information in the spreadsheet.")
+    print("In the outputs sheet.")
     print("Run the program again to analyse a different question.")
     print("Program by: Erik Vodopivec Forsman")
+
 
 main()
