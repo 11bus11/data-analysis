@@ -29,7 +29,7 @@ I could access the document from my program with the help of 2 APIs. Google Driv
 It can also handle inputs that would cause a ValueError (if you give the program something that cant be converted to an integer). If there is a ValueError, the program will ask you to input a number instead. It will continue doing that until you comply. This is used when the user writes which question they want to be analysed.
 
 If an input is not one of the three supported ones (yes, no, none), or if the number of answers are not the same as the supposed total amount of answers (Extra validation due to it being very important that it is correct), the program will end. Before ending it the user will be told that there is a problem, what the problem most likely is (based on which part of the input validation it failed) and to check the spreadsheet. Images of the different errors are shown below:
-![Wrong values problem](docs/features_value_problem.png)
+![Wrong values problem](docs/features_value_problem.jpeg)
 ![Not a number problem](docs/features_not_number.jpeg)
 ![No values problem](docs/features_no_values.png)
 
