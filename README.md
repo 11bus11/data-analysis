@@ -15,7 +15,8 @@ I want the user to be able to:
 I have done my best to make sure all users understands what they should do. I have given clear instructions and explained what the problems are when endng the program due to input errors.
 
 ## Features
-The program takes your numbers, and then it calculates how many prcent are positive, negative and avoided answers.  
+The program takes your numbers, and then it calculates how many prcent are positive, negative and avoided answers. This is how the program works with the correct inputs and values:
+![No problems](docs/features_no_problem.png)
 
 ### Google sheets
 The program gets the data from a google sheets document. The layout of this document looks like this:
@@ -27,7 +28,10 @@ I could access the document from my program with the help of 2 API:s. Google Dri
 ### Error handling
 It can also handle inputs that would cause a ValueError (if you give the program something that cant be converted to an intages). If there is a ValueError, the program will ask you to input a number instead. It will continue doing that until you comply. This is used when the user writes which question they want analysed.
 
-If an input is not one of the three supported ones (yes, no, none), or if the number of answers are not the same as the supposed total answers (Extra validation due to it being very important that it is correct), the program will end. Before endig it the user will get be told that there is a problem, what the problem most likely is (based on which part of the input validation it was that failed) and to check the spreadsheet.
+If an input is not one of the three supported ones (yes, no, none), or if the number of answers are not the same as the supposed total answers (Extra validation due to it being very important that it is correct), the program will end. Before endig it the user will get be told that there is a problem, what the problem most likely is (based on which part of the input validation it was that failed) and to check the spreadsheet. Images if the different errors are shown bellow:
+![Wrong values problem](docs/features_value_problem.png)
+![Not a number problem](docs/features_not_number.jpeg)
+![No values problem](docs/features_no_values.png)
 
 ### Potential features
 - Making it possible to analyse more than one question.
@@ -78,7 +82,7 @@ This project was deployed with Heroku.
 - Most other buge was caused by me forgetting something small, and was fixed very easily then I finally realised what I had forgotten. One example of this is then I deployed the project to heroku, and the spreadsheet could not be reached by the program. I had forgotten to share the document...
 
 ### Unfixed bugs
-- It is not really a bug, but it is not ideal. You can input a number that is not whole as the question choice, and the program wont stop you right away. This means you do not get the option to input another number instead. I did not have enough time to solve this.
+- The validation for the question input only checks if the input is a number. You can input a number that is not whole as the question choice, and the program wont stop you right away. This means you do not get the option to input another number instead. It can also lead to the user getting an error if they input a number that is to big. I did not have enough time to solve this. 
 
 ## Credits
 I got some help from Robin Koelewijn (Data Scientist) in order to propperly understand things I found confusing. He also helped me to get on the right track when I got stuck. The API part is copied from the "Love sandwiches" project, and I got some help from Robin. The instructions for how to deploy the project also came from "Love sandwiches".
